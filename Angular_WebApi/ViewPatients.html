@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>Search Patients</title>
+    <script src="../Scripts/jquery-2.2.3.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+
+    <script src="../Scripts/ui-grid.js"></script>
+    <link href="../Content/ui-grid.css" rel="stylesheet" />
+    <script src="../Angular/main.js"></script>
+    <script src="../Angular/service.js"></script>
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <style>
+        .full button span {
+            background-color: limegreen;
+            border-radius: 32px;
+            color: black;
+        }
+
+        .partially button span {
+            background-color: orange;
+            border-radius: 32px;
+            color: black;
+        }
+    </style>
+    <meta charset="utf-8" />
+</head>
+<body ng-controller="studentcontroller">
+    <form class="form-horizontal" role="form">
+        <div class="container">
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <h1>Search Patients</h1>
+            </div>
+            <!--<input type="text" disabled="disabled"  ng-model="ID" />-->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Patient Name</label>
+
+                <div class="col-sm-10">
+                    <input class="form-control" id="focusedInput" type="text" placeholder="Please Enter Patient Name" ng-model="RequestObj.Name">
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label">Date Of Birth</label>
+                <div class="col-md-10">
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="RequestObj.DateOfBirth" 
+                            is-open="popup1.opened" datepicker-options="dateOptions"  close-text="Close" 
+                            alt-input-formats="altInputFormats" placeholder="Please Select Patient DOB"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label class="col-sm-2 control-label">Date Of Birth</label>
+
+                <div class="col-sm-10">
+                    <input class="form-control" id="Text1" type="text" placeholder="Please Enter Patient DOB" ng-model="RequestObj.DateOfBirth">
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Phone</label>
+
+                <div class="col-sm-10">
+                    <input class="form-control" id="Text2" type="text" placeholder="Please Enter Patient Phone Number" ng-model="RequestObj.Phone">
+                </div>
+            </div>
+            <!--<div class="form-group">
+                <label class="col-sm-2 control-label">Date Of Registration</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" uib-datepicker-popup
+                        ng-model="RequestObj.DateOfRegistration"
+                        is-open="true"
+                        datepicker-options="dateOptions"
+                        ng-required="true"
+                        close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                    <!--<div class="col-sm-10">
+                    <input class="form-control" id="Text3" type="text" placeholder="Please Enter Patient Registration" ng-model="RequestObj.DateOfRegistration">
+                </div>
+            </div>-->
+        
+            <div class="form-group">
+
+                <label class="col-sm-2 control-label">Date Of Registration</label>
+                <div class="col-md-10">
+                    <p class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="RequestObj.DateOfRegistration" 
+                            is-open="popup2.opened" datepicker-options="dateOptions"  close-text="Close" 
+                            alt-input-formats="altInputFormats" placeholder="Please Select Patient Registration"/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary" ng-click="SearchPatient()">Search</button>
+
+                <button type="submit" class="btn btn-warning" ng-click="Cancel()">Cancel</button>
+            </div>
+
+
+        </div>
+
+
+        <div ui-grid="gridOptions1" ui-grid-pagination class="grid"></div>
+        </div>
+    </form>
+</body>
+</html>
